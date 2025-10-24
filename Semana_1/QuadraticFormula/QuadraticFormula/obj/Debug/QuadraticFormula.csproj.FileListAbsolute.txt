@@ -1,0 +1,11 @@
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\bin\Debug\QuadraticFormula.exe.config
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\bin\Debug\QuadraticFormula.exe
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\bin\Debug\QuadraticFormula.pdb
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.csproj.AssemblyReference.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.Form1.resources
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.Properties.Resources.resources
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.csproj.GenerateResource.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.csproj.CoreCompileInputs.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.exe
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.pdb
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\QuadraticFormula\QuadraticFormula\obj\Debug\QuadraticFormula.exe.config

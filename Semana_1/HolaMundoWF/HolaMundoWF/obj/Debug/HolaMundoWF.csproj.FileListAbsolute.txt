@@ -1,0 +1,10 @@
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\bin\Debug\HolaMundoWF.exe.config
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\bin\Debug\HolaMundoWF.exe
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\bin\Debug\HolaMundoWF.pdb
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.csproj.AssemblyReference.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.Form1.resources
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.Properties.Resources.resources
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.csproj.GenerateResource.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.csproj.CoreCompileInputs.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.exe
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_1\HolaMundoWF\HolaMundoWF\obj\Debug\HolaMundoWF.pdb
