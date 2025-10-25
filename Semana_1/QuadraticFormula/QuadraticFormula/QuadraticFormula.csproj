@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Formula.cs" />
-    <Compile Include="Classes\Sign.cs" />
     <Compile Include="Classes\X1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

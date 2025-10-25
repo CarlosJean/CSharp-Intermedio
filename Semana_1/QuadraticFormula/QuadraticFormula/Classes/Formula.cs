@@ -18,6 +18,6 @@ namespace QuadraticFormula.Classes {
 			this.Denominator = 2 * a;
 		}
 
-		public virtual double Value => 0;
+		public abstract double Product { get; }
 	}
 }
