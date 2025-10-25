@@ -9,17 +9,19 @@ namespace QuadraticFormula {
 			InitializeComponent();
 		}
 
-		private void btnCalcular_Click(object sender, EventArgs e) {
+		private void BtnCalculate_Click(object sender, EventArgs e) {
 			double a = Convert.ToDouble(txtA.Text);
 			double b = Convert.ToDouble(txtB.Text);
 			double c = Convert.ToDouble(txtC.Text);
 
-			Formula f1 = new Formula(a, b, c);
-			txtX1.Text = f1.X1.ToString();
-			txtX2.Text = f1.X2.ToString();
+			Formula x1 = new X1(a, b, c);
+			Formula x2 = new X2(a, b, c);
+
+			txtX1.Text = x1.Value.ToString();
+			txtX2.Text = x2.Value.ToString();
 		}
 
-		private void btnLimpiar_Click(object sender, EventArgs e) {
+		private void BtnClear_Click(object sender, EventArgs e) {
 			this.Controls.OfType<TextBox>().ToList().ForEach(textBox => { textBox.Clear(); });
 		}
 	}

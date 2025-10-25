@@ -99,7 +99,7 @@
 			this.btnCalcular.TabIndex = 6;
 			this.btnCalcular.Text = "Calcular";
 			this.btnCalcular.UseVisualStyleBackColor = true;
-			this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+			this.btnCalcular.Click += new System.EventHandler(this.BtnCalculate_Click);
 			// 
 			// txtX1
 			// 
@@ -147,7 +147,7 @@
 			this.btnLimpiar.TabIndex = 11;
 			this.btnLimpiar.Text = "Limpiar";
 			this.btnLimpiar.UseVisualStyleBackColor = true;
-			this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+			this.btnLimpiar.Click += new System.EventHandler(this.BtnClear_Click);
 			// 
 			// Form1
 			// 

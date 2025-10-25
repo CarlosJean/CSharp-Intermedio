@@ -1,26 +1,23 @@
 ﻿using System;
 
 namespace QuadraticFormula.Classes {
-	public class Formula {
+	public abstract class Formula {
 
-		private readonly double _x1;
-		private readonly double _x2;
+		protected readonly double Discriminant;
+		protected readonly double B;
+		protected readonly double Denominator;		
 
-		public double X1 => _x1;
-		public double X2 => _x2;
+		public Formula(double a, double b, double c) {
 
-		public Formula(double a, double b, double c) {			
+			this.B = b;
+
 			//b² - 4ac
-			double discriminant = Math.Pow(b, 2) - 4 * a * c;
+			this.Discriminant = Math.Pow(b, 2) - 4 * a * c;
 
 			// 2a
-			double denominator = 2 * a;
-
-			//-b + √b² - 4ac / 2a
-			this._x1 = (-b + Math.Sqrt(discriminant)) / denominator;
-
-			//-b - √b²- 4ac / 2a
-			this._x2 = (-b - Math.Sqrt(discriminant)) / denominator;
+			this.Denominator = 2 * a;
 		}
+
+		public virtual double Value => 0;
 	}
 }
