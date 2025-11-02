@@ -1,0 +1,12 @@
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.AssemblyInfoInputs.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.AssemblyInfo.cs
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.csproj.CoreCompileInputs.cache
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.sourcelink.json
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\bin\Debug\net8.0\FormularioContacto.Entities.deps.json
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\bin\Debug\net8.0\FormularioContacto.Entities.dll
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\bin\Debug\net8.0\FormularioContacto.Entities.pdb
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.dll
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\refint\FormularioContacto.Entities.dll
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\FormularioContacto.Entities.pdb
+C:\Users\jean1\source\repos\C#_Intermedio\Semana_2\FormularioContacto\FormularioContacto.Entities\obj\Debug\net8.0\ref\FormularioContacto.Entities.dll
