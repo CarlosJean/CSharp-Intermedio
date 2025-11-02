@@ -1,5 +1,11 @@
 # QuadraticFormula
 
+## Tarea
+
+Realizar el siguiente programa usando la programacion orientada a objeto.
+
+<img width="245" height="113" alt="image" src="https://github.com/user-attachments/assets/8cfc4599-70c6-49ec-82de-abb3544c7e35" />
+
 ## Pasos para ejecutarlo localmente
 
 1. Clonar el proyecto a través del comando:
