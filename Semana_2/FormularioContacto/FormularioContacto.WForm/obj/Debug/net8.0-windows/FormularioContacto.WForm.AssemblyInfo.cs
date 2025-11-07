@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FormularioContacto.WForm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7e527a16455cc8a9cebd559156a695dccb61a3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e95860754d56fdfacd8bed221621834e7bfdb94c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FormularioContacto.WForm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FormularioContacto.WForm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

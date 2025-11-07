@@ -23,6 +23,7 @@
 		///  the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			components = new System.ComponentModel.Container();
 			menuStrip1 = new MenuStrip();
 			nuevoToolStripMenuItem = new ToolStripMenuItem();
 			registrarToolStripMenuItem = new ToolStripMenuItem();
@@ -42,11 +43,13 @@
 			label5 = new Label();
 			groupBox3 = new GroupBox();
 			DgvContacts = new DataGridView();
+			errorProvider1 = new ErrorProvider(components);
 			menuStrip1.SuspendLayout();
 			groupBox1.SuspendLayout();
 			groupBox2.SuspendLayout();
 			groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)DgvContacts).BeginInit();
+			((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
 			SuspendLayout();
 			// 
 			// menuStrip1
@@ -54,7 +57,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { nuevoToolStripMenuItem, registrarToolStripMenuItem, modificarToolStripMenuItem1, eliminarToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(676, 24);
+			menuStrip1.Size = new Size(907, 24);
 			menuStrip1.TabIndex = 0;
 			menuStrip1.Text = "menuStrip1";
 			// 
@@ -98,24 +101,28 @@
 			groupBox1.Controls.Add(label1);
 			groupBox1.Location = new Point(12, 27);
 			groupBox1.Name = "groupBox1";
-			groupBox1.Size = new Size(657, 103);
+			groupBox1.Size = new Size(883, 103);
 			groupBox1.TabIndex = 1;
 			groupBox1.TabStop = false;
 			groupBox1.Text = "Datos";
 			// 
 			// txtPhoneNumber
 			// 
-			txtPhoneNumber.Location = new Point(402, 63);
+			txtPhoneNumber.Location = new Point(529, 60);
 			txtPhoneNumber.Name = "txtPhoneNumber";
 			txtPhoneNumber.Size = new Size(158, 23);
 			txtPhoneNumber.TabIndex = 7;
+			txtPhoneNumber.Validating += FrmContacts_Onvalidating;
+			txtPhoneNumber.Validated += FrmContacts_Validated;
 			// 
 			// txtEmail
 			// 
-			txtEmail.Location = new Point(385, 29);
+			txtEmail.Location = new Point(529, 26);
 			txtEmail.Name = "txtEmail";
-			txtEmail.Size = new Size(261, 23);
+			txtEmail.Size = new Size(282, 23);
 			txtEmail.TabIndex = 6;
+			txtEmail.Validating += FrmContacts_Onvalidating;
+			txtEmail.Validated += FrmContacts_Validated;
 			// 
 			// txtName
 			// 
@@ -123,18 +130,21 @@
 			txtName.Name = "txtName";
 			txtName.Size = new Size(268, 23);
 			txtName.TabIndex = 5;
+			txtName.Validating += FrmContacts_Onvalidating;
+			txtName.Validated += FrmContacts_Validated;
 			// 
 			// txtContactId
 			// 
 			txtContactId.Location = new Point(69, 29);
 			txtContactId.Name = "txtContactId";
+			txtContactId.ReadOnly = true;
 			txtContactId.Size = new Size(150, 23);
 			txtContactId.TabIndex = 4;
 			// 
 			// label4
 			// 
 			label4.AutoSize = true;
-			label4.Location = new Point(343, 63);
+			label4.Location = new Point(470, 60);
 			label4.Name = "label4";
 			label4.Size = new Size(53, 15);
 			label4.TabIndex = 3;
@@ -143,7 +153,7 @@
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Location = new Point(343, 32);
+			label3.Location = new Point(470, 29);
 			label3.Name = "label3";
 			label3.Size = new Size(36, 15);
 			label3.TabIndex = 2;
@@ -173,7 +183,7 @@
 			groupBox2.Controls.Add(label5);
 			groupBox2.Location = new Point(12, 136);
 			groupBox2.Name = "groupBox2";
-			groupBox2.Size = new Size(657, 82);
+			groupBox2.Size = new Size(883, 82);
 			groupBox2.TabIndex = 2;
 			groupBox2.TabStop = false;
 			groupBox2.Text = "Buscar";
@@ -182,7 +192,7 @@
 			// 
 			txtSearch.Location = new Point(63, 38);
 			txtSearch.Name = "txtSearch";
-			txtSearch.Size = new Size(583, 23);
+			txtSearch.Size = new Size(621, 23);
 			txtSearch.TabIndex = 1;
 			txtSearch.TextChanged += TxtSearch_TextChanged;
 			// 
@@ -200,7 +210,7 @@
 			groupBox3.Controls.Add(DgvContacts);
 			groupBox3.Location = new Point(12, 224);
 			groupBox3.Name = "groupBox3";
-			groupBox3.Size = new Size(657, 214);
+			groupBox3.Size = new Size(883, 214);
 			groupBox3.TabIndex = 3;
 			groupBox3.TabStop = false;
 			groupBox3.Text = "Listar";
@@ -217,22 +227,27 @@
 			DgvContacts.ReadOnly = true;
 			DgvContacts.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
 			DgvContacts.SelectionMode = DataGridViewSelectionMode.CellSelect;
-			DgvContacts.Size = new Size(651, 192);
+			DgvContacts.Size = new Size(877, 192);
 			DgvContacts.TabIndex = 0;
 			DgvContacts.CellClick += DgvContacts_CellClick;
+			// 
+			// errorProvider1
+			// 
+			errorProvider1.ContainerControl = this;
 			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(676, 450);
+			ClientSize = new Size(907, 450);
 			Controls.Add(groupBox3);
 			Controls.Add(groupBox2);
 			Controls.Add(groupBox1);
 			Controls.Add(menuStrip1);
 			MainMenuStrip = menuStrip1;
+			MaximizeBox = false;
 			Name = "Form1";
-			Text = "Form1";
+			Text = "Formulario de contacto";
 			Load += Form1_Load;
 			menuStrip1.ResumeLayout(false);
 			menuStrip1.PerformLayout();
@@ -242,6 +257,7 @@
 			groupBox2.PerformLayout();
 			groupBox3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)DgvContacts).EndInit();
+			((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -267,5 +283,6 @@
 		private Label label5;
 		private GroupBox groupBox3;
 		private DataGridView DgvContacts;
+		private ErrorProvider errorProvider1;
 	}
 }

@@ -5,7 +5,7 @@
 namespace FormularioContacto.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class AddContactTable : Migration
+    public partial class AddContactsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

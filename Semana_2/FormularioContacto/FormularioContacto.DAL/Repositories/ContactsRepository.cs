@@ -24,11 +24,16 @@ namespace FormularioContacto.DAL.Repositories {
 		}
 
 		public List<Contact> GetAll() {
-			return _context.Contacts.ToList();
+
+			try {
+				return _context.Contacts.ToList();
+			} catch (Exception) {
+
+				throw;
+			}
 		}
 
 		public bool ModifyContact(Contact contact) {
-
 
 			var foundContact = _context.Contacts.Find(contact.ContactId);
 
@@ -46,13 +51,23 @@ namespace FormularioContacto.DAL.Repositories {
 		}
 
 		public bool SaveContact(Contact contact) {
-			_context.Contacts.Add(contact);
-			_context.SaveChanges();
-			return true;
+
+			try {
+				_context.Contacts.Add(contact);
+				_context.SaveChanges();
+				return true;
+			} catch (Exception ex) {
+				throw;			
+			}
 		}
 
 		public List<Contact> Search(string text) {
-			return _context.Contacts.Where(c => c.Name.Contains(text)).ToList();
+			try {
+				return _context.Contacts.Where(c => c.Name.Contains(text)).ToList();
+			} catch (Exception) {
+
+				throw;
+			}
 		}
 	}
 }

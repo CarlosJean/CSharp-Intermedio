@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormularioContacto.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251102003229_AddContactTable")]
-    partial class AddContactTable
+    [Migration("20251107015236_AddContactsTable")]
+    partial class AddContactsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
