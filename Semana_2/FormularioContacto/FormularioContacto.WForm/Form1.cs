@@ -137,6 +137,8 @@ namespace FormularioContacto.WForm {
 				txtEmail.Text = DgvContacts[2, row].Value.ToString();
 				txtPhoneNumber.Text = DgvContacts[3, row].Value.ToString();
 
+				this.formIsValid = true;
+
 			} catch (Exception) {
 
 				MessageBox.Show("Ocurrió un error de sistema. Por favor reintentelo.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
