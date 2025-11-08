@@ -30,7 +30,6 @@
 			modificarToolStripMenuItem1 = new ToolStripMenuItem();
 			eliminarToolStripMenuItem = new ToolStripMenuItem();
 			groupBox1 = new GroupBox();
-			txtPhoneNumber = new TextBox();
 			txtEmail = new TextBox();
 			txtName = new TextBox();
 			txtContactId = new TextBox();
@@ -44,6 +43,7 @@
 			groupBox3 = new GroupBox();
 			DgvContacts = new DataGridView();
 			errorProvider1 = new ErrorProvider(components);
+			txtPhoneNumber = new MaskedTextBox();
 			menuStrip1.SuspendLayout();
 			groupBox1.SuspendLayout();
 			groupBox2.SuspendLayout();
@@ -105,15 +105,6 @@
 			groupBox1.TabIndex = 1;
 			groupBox1.TabStop = false;
 			groupBox1.Text = "Datos";
-			// 
-			// txtPhoneNumber
-			// 
-			txtPhoneNumber.Location = new Point(529, 60);
-			txtPhoneNumber.Name = "txtPhoneNumber";
-			txtPhoneNumber.Size = new Size(158, 23);
-			txtPhoneNumber.TabIndex = 7;
-			txtPhoneNumber.Validating += FrmContacts_Onvalidating;
-			txtPhoneNumber.Validated += FrmContacts_Validated;
 			// 
 			// txtEmail
 			// 
@@ -235,6 +226,14 @@
 			// 
 			errorProvider1.ContainerControl = this;
 			// 
+			// txtPhoneNumber
+			// 
+			txtPhoneNumber.Location = new Point(529, 60);
+			txtPhoneNumber.Mask = "(###) ###-####";
+			txtPhoneNumber.Name = "txtPhoneNumber";
+			txtPhoneNumber.Size = new Size(155, 23);
+			txtPhoneNumber.TabIndex = 8;
+			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -270,7 +269,6 @@
 		private ToolStripMenuItem modificarToolStripMenuItem1;
 		private ToolStripMenuItem eliminarToolStripMenuItem;
 		private GroupBox groupBox1;
-		private TextBox txtPhoneNumber;
 		private TextBox txtEmail;
 		private TextBox txtName;
 		private TextBox txtContactId;
@@ -284,5 +282,6 @@
 		private GroupBox groupBox3;
 		private DataGridView DgvContacts;
 		private ErrorProvider errorProvider1;
+		private MaskedTextBox txtPhoneNumber;
 	}
 }
