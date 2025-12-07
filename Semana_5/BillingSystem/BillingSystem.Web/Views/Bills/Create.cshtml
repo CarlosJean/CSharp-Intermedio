@@ -1,0 +1,80 @@
+﻿@model BillingSystem.Web.Models.BillsCreateViewModel
+
+<fieldset>
+	<legend>Datos del cliente</legend>
+
+
+	<label for="txtPersonalIdentification">Identificación del cliente</label>
+	<input id="txtPersonalIdentification" />
+
+	<label for="txtCustomerName">Nombre del cliente</label>
+	<input id="txtCustomerName" readonly />
+
+	<button id="btnFindCustomer">
+		Buscar
+	</button>
+</fieldset>
+
+<fieldset>
+	<legend>Detalles</legend>
+
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+		id="btnAddProducts">
+		Añadir productos
+	</button>
+
+	<table id="tblDetails">
+		<thead>
+			<tr>
+				<th>Producto</th>
+				<th>Impuesto</th>
+				<th>Valor</th>
+				<th>Cantidad</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+	<div>
+		<label for="">Subtotal</label>
+		<label for="" id="lblSubtotal">$0</label>
+		<label for="">ITBIS</label>
+		<label for="" id="lblTaxes">$0</label>
+		<label for="">Total</label>
+		<label for="" id="lblTotal">$0</label>
+	</div>
+</fieldset>
+
+<button type="button" onClick="saveBill()">Guardar Factura</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<table id="tblProductsList">
+					<thead>
+						<tr>
+							<th>Producto</th>
+							<th>Disponibilidad</th>
+							<th>Precio</th>
+							<th>Acción</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/billscreate.js"></script>

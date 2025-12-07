@@ -13,8 +13,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
 options.UseSqlServer("Data Source=JEAN_HOLGUIN;Initial Catalog=BillingSystem;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
-builder.Services.AddScoped<UnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<BillService>();
 
 builder.Services.AddControllers();
 

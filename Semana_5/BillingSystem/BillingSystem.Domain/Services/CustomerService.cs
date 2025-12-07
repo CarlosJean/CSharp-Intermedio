@@ -5,9 +5,9 @@ namespace BillingSystem.Domain.Services;
 
 public class CustomerService
 {
-    private readonly UnitOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public CustomerService(UnitOfWork unitOfWork)
+    public CustomerService(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
@@ -36,11 +36,12 @@ public class CustomerService
 
         if (existingCustomer == null) return false; 
         
-        existingCustomer.Name = customer.Name;
-        existingCustomer.PersonalIdentification = customer.PersonalIdentification;
-        existingCustomer.Email = customer.Email;
-        
+        // existingCustomer.Name = customer.Name;
+        // existingCustomer.PersonalIdentification = customer.PersonalIdentification;
+        // existingCustomer.Email = customer.Email;
+        _unitOfWork.CustomerRepository.Update(customer);
         await _unitOfWork.SaveAsync();
+
         return true;        
     }
 
@@ -55,4 +56,10 @@ public class CustomerService
 
         return true;
     }
+
+	public async Task<Customer> GetByPersonalIdentification(string personalIdentification) {
+        var customer = this.GetAll().Result.FirstOrDefault(c => c.PersonalIdentification == personalIdentification);
+
+        return customer ?? new Customer();
+	}
 }

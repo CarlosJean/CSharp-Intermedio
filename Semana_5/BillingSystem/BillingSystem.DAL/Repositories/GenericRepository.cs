@@ -1,6 +1,7 @@
-using System.Threading.Tasks;
 using BillingSystem.DAL.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace BillingSystem.DAL.Repositories;
 
@@ -19,15 +20,27 @@ public class GenericRepository<TEntity> where TEntity : class
     {
         await _dbSet.AddAsync(entity);
     }
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
-    {
+	public async Task<IEnumerable<TEntity>> GetAllAsync(
+		params Expression<Func<TEntity, object>>[] includes) {
+		IQueryable<TEntity> query = _dbSet;
 
-        IQueryable<TEntity> query = _dbSet;
-        return await query.ToListAsync();
-    }
-    public virtual async Task<TEntity> GetByIdAsync(int id)
+		foreach (var include in includes) {
+			query = query.Include(include);
+		}
+
+		return await query.ToListAsync();
+	}
+
+
+	public virtual async Task<TEntity> GetByIdAsync(int? id, bool tracking = false)
     {
-        return await _dbSet.FindAsync(id);
+        var entity = await _dbSet.FindAsync(id);
+
+        if (!tracking && entity != null) {
+            _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        return entity;
     }
 
     public virtual void Delete(TEntity entityToDelete)
@@ -37,5 +50,11 @@ public class GenericRepository<TEntity> where TEntity : class
             _dbSet.Attach(entityToDelete);
         }
         _dbSet.Remove(entityToDelete);
+    }
+
+    public virtual void Update(TEntity entityToUpdate)
+    {
+        _dbSet.Attach(entityToUpdate);
+        _context.Entry(entityToUpdate).State = EntityState.Modified;
     }
 }

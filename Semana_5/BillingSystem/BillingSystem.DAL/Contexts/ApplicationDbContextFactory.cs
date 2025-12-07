@@ -12,5 +12,5 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
         optionBuilder.UseSqlServer("Data Source=JEAN_HOLGUIN;Initial Catalog=BillingSystem;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
         return new ApplicationDbContext(optionBuilder.Options);
-    }
+    }    
 }
