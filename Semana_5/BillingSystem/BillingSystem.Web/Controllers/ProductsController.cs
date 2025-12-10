@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BillingSystem.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using BillingSystem.Core.Entities;
-using BillingSystem.DAL.Contexts;
 
 namespace BillingSystem.Web.Controllers
 {
+    [Route("productos")]
     public class ProductsController : Controller
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-		public ProductsController(ProductService productService)
+		public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
 
-        // GET: Products
-        public async Task<IActionResult> Index()
+		[HttpGet("/")]
+		[HttpGet("")]
+		// GET: Products
+		public async Task<IActionResult> Index()
         {
             return View(await _productService.GetAll());
         }
 
+        [HttpGet("detalles")]
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -34,9 +31,9 @@ namespace BillingSystem.Web.Controllers
             }
 
 
-
             var product = await _productService.GetById((int)id);
-            if (product == null)
+
+			if (product == null)
             {
                 return NotFound();
             }
@@ -44,8 +41,9 @@ namespace BillingSystem.Web.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
-        public IActionResult Create()
+		[HttpGet("crear")]
+		// GET: Products/Create
+		public IActionResult Create()
         {
             return View();
         }
@@ -53,9 +51,9 @@ namespace BillingSystem.Web.Controllers
         // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("crear")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,UnitPrice,Stock")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Description,UnitPrice,Stock, TaxRate")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -65,8 +63,9 @@ namespace BillingSystem.Web.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+		[HttpGet("editar")]
+		// GET: Products/Edit/5
+		public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -74,6 +73,8 @@ namespace BillingSystem.Web.Controllers
             }
 
             var product = await _productService.GetById((int)id);
+            product.TaxRate *= 100;
+
             if (product == null)
             {
                 return NotFound();
@@ -84,9 +85,9 @@ namespace BillingSystem.Web.Controllers
         // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("editar")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,UnitPrice,Stock")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,UnitPrice,Stock,TaxRate")] Product product)
         {
             if (id != product.Id)
             {
@@ -115,8 +116,9 @@ namespace BillingSystem.Web.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+		[HttpGet("remover")]
+		// GET: Products/Delete/5
+		public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -133,8 +135,9 @@ namespace BillingSystem.Web.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
+		
+		// POST: Products/Delete/5
+		[HttpPost("remover"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

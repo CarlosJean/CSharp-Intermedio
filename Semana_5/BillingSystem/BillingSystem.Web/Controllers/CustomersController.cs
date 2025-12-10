@@ -1,51 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BillingSystem.Core.Entities;
+using BillingSystem.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using BillingSystem.Core.Entities;
-using BillingSystem.DAL.Contexts;
 
 namespace BillingSystem.Web.Controllers
 {
-    public class CustomersController : Controller
+	[Route("clientes")]
+	public class CustomersController : Controller
     {
-        private readonly CustomerService _Customerservice;
+		private readonly ICustomerService _customerService;
 
-		public CustomersController(CustomerService Customerservice)
+		public CustomersController(ICustomerService customerService) {
+			_customerService = customerService;
+		}
+		
+		// GET: Customers
+		public async Task<IActionResult> Index()
         {
-            _Customerservice = Customerservice;
-        }
+			return View(await _customerService.GetAll());
+		}
 
-        // GET: Customers
-        public async Task<IActionResult> Index()
-        {
-            return View(await _Customerservice.GetAll());
-        }
-
-        // GET: Customers/Details/5
+		// GET: Customers/Details/5
+		[HttpGet("Detalles")]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+			if (id == null) {
+				return NotFound();
+			}
 
+			var product = await _customerService.GetById((int)id);
+			if (product == null) {
+				return NotFound();
+			}
 
+			return View(product);
+		}
 
-            var product = await _Customerservice.GetById((int)id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
-        }
-
-        // GET: Customers/Create
-        public IActionResult Create()
+		// GET: Customers/Create
+		[HttpGet("crear")]
+		public IActionResult Create()
         {
             return View();
         }
@@ -53,104 +45,92 @@ namespace BillingSystem.Web.Controllers
         // POST: Customers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("crear")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,UnitPrice,Stock")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Id,Name,PersonalIdentification,Email")] Customer customer)
         {
-            if (ModelState.IsValid)
-            {
-                await _Customerservice.AddCustomer(customer);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(customer);
-        }
+			if (ModelState.IsValid) {
+				await _customerService.AddCustomer(customer);
+				return RedirectToAction(nameof(Index));
+			}
+			return View(customer);
+		}
 
-        // GET: Customers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+		// GET: Customers/Edit/5
+		[HttpGet("editar/{id?}")]
+		public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+			if (id == null) {
+				return NotFound();
+			}
 
-            var product = await _Customerservice.GetById((int)id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            return View(product);
-        }
+			var product = await _customerService.GetById((int)id);
+			if (product == null) {
+				return NotFound();
+			}
+			return View(product);
+		}
 
-        // POST: Customers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,UnitPrice,Stock")] Customer customer)
+		// POST: Customers/Edit/5
+		// To protect from overposting attacks, enable the specific properties you want to bind to.
+		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost("editar")]
+		[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PersonalIdentification,Email")] Customer customer)
         {
-            if (id != customer.Id)
-            {
-                return NotFound();
-            }
+			if (id != customer.Id) {
+				return NotFound();
+			}
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-					await _Customerservice.Update(customer);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (await CustomerExists(customer.Id) == false)
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(customer);
-        }
+			if (ModelState.IsValid) {
+				try {
+					await _customerService.Update(customer);
+				} catch (DbUpdateConcurrencyException) {
+					if ( await CustomerExists(customer.Id) == false) {
+						return NotFound();
+					} else {
+						throw;
+					}
+				}
+				return RedirectToAction(nameof(Index));
+			}
+			return View(customer);
+		}
 
-        // GET: Customers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+		// GET: Customers/Delete/5
+		[HttpGet("remover/{id?}")]
+		public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }           
+			if (id == null) {
+				return NotFound();
+			}
 
-			var product = await _Customerservice.GetById((int)id);
+			var product = await _customerService.GetById((int)id);
 
-			if (product == null)
-            {
-                return NotFound();
-            }
+			if (product == null) {
+				return NotFound();
+			}
 
-            return View(product);
-        }
+			return View(product);
+		}
 
         // POST: Customers/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("remover/{id}"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _Customerservice.GetById(id);
-            if (product != null)
-            {
-				_Customerservice.Remove(id);
-            }
-            return RedirectToAction(nameof(Index));
-        }
-
-        private async Task<bool> CustomerExists(int id)
-        {
-            bool productExists = _Customerservice.GetById(id) != null;
-
-            return productExists;
+			var product = await _customerService.GetById(id);
+			if (product != null) {
+				_customerService.Remove(id);
+			}
+			return RedirectToAction(nameof(Index));
 		}
-    }
+
+		private async Task<bool> CustomerExists(int id)
+        {
+			bool productExists = _customerService.GetById(id) != null;
+
+			return productExists;
+		}
+	}
 }

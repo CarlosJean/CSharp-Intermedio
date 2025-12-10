@@ -1,23 +1,28 @@
+using BillingSystem.Core.Interfaces;
+using BillingSystem.Web.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Services container
+var connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlServer("Data Source=JEAN_HOLGUIN;Initial Catalog=BillingSystem;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False"));
+	options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<CustomerService>();
-builder.Services.AddScoped<ProductService>();
-builder.Services.AddScoped<BillService>();
+builder.Services.AddScoped<IBillService, BillService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddControllersWithViews();
 
-
 //Middlewares`
 var app = builder.Build();
+
 app.UseStaticFiles();
 
+app.UseRouting();
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+	name: "default",
+	pattern: "{controller=Customers}/{action=Index}/{id?}");
 
 app.Run();

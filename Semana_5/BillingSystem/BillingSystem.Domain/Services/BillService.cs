@@ -1,12 +1,11 @@
 using BillingSystem.Core.Entities;
-using BillingSystem.DAL.Contexts;
+using BillingSystem.Core.Interfaces;
 using BillingSystem.DAL.UnitsOfWork;
 using BillingSystem.Web.Controllers;
-using System.Collections;
 
 namespace BillingSystem.Domain.Services;
 
-public class BillService
+public class BillService : IBillService
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -52,8 +51,17 @@ public class BillService
             Total = total,            
         };
 
+		foreach (var detail in bill.BillDetails) {
+            var product = await _unitOfWork.ProductRepository.GetByIdAsync(detail.ProductId);
+
+            if (product != null) { 
+			    product.Stock -= detail.Quantity;            
+                _unitOfWork.ProductRepository.Update(product);
+            }
+		}
+
         await _unitOfWork.BillRepository.CreateAsync(bill);
-        await _unitOfWork.SaveAsync();
+		await _unitOfWork.SaveAsync();
 
         return true;
     }

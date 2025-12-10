@@ -1,9 +1,10 @@
 using BillingSystem.Core.Entities;
+using BillingSystem.Core.Interfaces;
 using BillingSystem.DAL.UnitsOfWork;
 
 namespace BillingSystem.Domain.Services;
 
-public class CustomerService
+public class CustomerService : ICustomerService
 {
     private readonly IUnitOfWork _unitOfWork;
 

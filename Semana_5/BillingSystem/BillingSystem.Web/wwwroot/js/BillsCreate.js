@@ -1,4 +1,4 @@
-﻿const baseUrl = "/bills"
+﻿const baseUrl = "/facturas"
 const btnFindCustomer = $("#btnFindCustomer");
 const txtPersonalIdentification = $("#txtPersonalIdentification");
 const txtCustomerName = $("#txtCustomerName");
@@ -40,8 +40,8 @@ btnAddProducts.on('click', function () {
                 `<tr>
                     <td>${product.description}</td>
                     <td>${product.stock}</td>
-                    <td>${product.unitPrice}</td>
-                    <td><button onClick='addProduct(${product.id})'>Añadir</button></td>
+                    <td>$ ${product.unitPrice.toLocaleString()}</td>
+                    <td><button onClick='addProduct(${product.id})' class='btn btn-primary' type='button'>Añadir</button></td>
                 </tr>`
             )
 
@@ -95,10 +95,11 @@ function addProduct(productId) {
 
 function refreshBillDetails(details) {
     const rows = details.map((product) =>
+
         `<tr>
             <td>${product.description}</td>
-            <td>${product.taxes}</td>
-            <td>${product.value}</td>
+            <td>$ ${product.taxes.toLocaleString()}</td>
+            <td>$ ${product.value.toLocaleString()}</td>
             <td>
                 <input 
                     max= ${product.stock}
@@ -106,11 +107,12 @@ function refreshBillDetails(details) {
                     placeholder= "Cantidad" 
                     type= "number" 
                     value= '${product.quantity}'
-                    onChange= 'quantityChanges(this, ${product.id}, ${product.stock})' 
+                    onChange= 'quantityChanges(this, ${product.id}, ${product.stock})'
+                    class='form-control'
                     />
             </td>
             <td>
-                <button onClick='removeProduct(${product.id})'>Remover</button>
+                <button onClick='removeProduct(${product.id})' class="btn btn-danger">Remover</button>
             </td>
         </tr>`
     )
@@ -132,9 +134,9 @@ function refreshTotals(details) {
         accumulator + currentProduct.value
         , 0);
 
-    lblSubtotal.text(subtotal);
-    lblTaxes.text(taxes);
-    lblTotal.text(total);
+    lblSubtotal.text(`$ ${subtotal.toLocaleString() }`);
+    lblTaxes.text(`$ ${taxes.toLocaleString() }`);
+    lblTotal.text(`$ ${total.toLocaleString() }`);
 }
 
 function removeProduct(productId) {
@@ -177,7 +179,7 @@ function quantityChanges({ value }, productId, stock) {
 function saveBill() {
 
     const bill = JSON.parse(localStorage.getItem("bill")) ?? {};
-    const billDetails = bill.details.map((detail) => (
+    const billDetails = bill?.details.map((detail) => (
         {
             id: detail.id,
             quantity: detail.quantity
@@ -191,6 +193,15 @@ function saveBill() {
         data: { ...request },
         success: function (response) {
             console.log(response);
+            Swal.fire({
+                icon: "success",
+                title: response.message,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            });
+
         },
         error: function (response) {
             Swal.fire({

@@ -1,9 +1,10 @@
 using BillingSystem.Core.Entities;
 using BillingSystem.DAL.UnitsOfWork;
+using BillingSystem.Web.Controllers;
 
 namespace BillingSystem.Domain.Services;
 
-public class ProductService
+public class ProductService : IProductService
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -14,6 +15,7 @@ public class ProductService
 
     public async Task AddProduct(Product product)
     {
+        product.TaxRate = product.TaxRate / 100;
         await _unitOfWork.ProductRepository.CreateAsync(product);
         await _unitOfWork.SaveAsync();
     }
@@ -43,6 +45,8 @@ public class ProductService
         var existingProduct = await _unitOfWork.ProductRepository.GetByIdAsync(product.Id);
 
         if (existingProduct == null) return false;
+
+        product.TaxRate = product.TaxRate / 100;
 
 		_unitOfWork.ProductRepository.Update(product);
 

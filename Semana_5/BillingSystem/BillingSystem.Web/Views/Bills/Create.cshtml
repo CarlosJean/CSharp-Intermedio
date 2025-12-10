@@ -1,63 +1,116 @@
 ﻿@model BillingSystem.Web.Models.BillsCreateViewModel
 
-<fieldset>
-	<legend>Datos del cliente</legend>
+@{
+	ViewData["Title"] = "Crear | Facturas";
+}
 
-
-	<label for="txtPersonalIdentification">Identificación del cliente</label>
-	<input id="txtPersonalIdentification" />
-
-	<label for="txtCustomerName">Nombre del cliente</label>
-	<input id="txtCustomerName" readonly />
-
-	<button id="btnFindCustomer">
-		Buscar
-	</button>
-</fieldset>
-
-<fieldset>
-	<legend>Detalles</legend>
-
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-		id="btnAddProducts">
-		Añadir productos
-	</button>
-
-	<table id="tblDetails">
-		<thead>
-			<tr>
-				<th>Producto</th>
-				<th>Impuesto</th>
-				<th>Valor</th>
-				<th>Cantidad</th>
-			</tr>
-		</thead>
-		<tbody></tbody>
-	</table>
-
-	<div>
-		<label for="">Subtotal</label>
-		<label for="" id="lblSubtotal">$0</label>
-		<label for="">ITBIS</label>
-		<label for="" id="lblTaxes">$0</label>
-		<label for="">Total</label>
-		<label for="" id="lblTotal">$0</label>
+<div class="container">
+	<div class="card mt-3">
+		<div class="card-body">
+			<h5 class="card-title">Datos del cliente</h5>
+			<hr />
+			<div class="row">
+				<div class="col-6">
+					<label for="txtPersonalIdentification">Identificación del cliente</label>
+					<input id="txtPersonalIdentification" class="form-control" placeholder="Introduzca la identificación personal del cliente" />
+				</div>
+				<div class="col-6">
+					<label for="txtCustomerName">Nombre del cliente</label>
+					<input id="txtCustomerName" class="form-control" readonly />
+				</div>
+				<div class="col-12 justify-content-center mt-2">
+					<div class="row justify-content-center">
+						<button class="btn btn-primary col-6" id="btnFindCustomer">
+							Buscar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</fieldset>
 
-<button type="button" onClick="saveBill()">Guardar Factura</button>
+	<div class="card mt-3">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-10">
+					<h5 class="card-title">Detalles</h5>
+				</div>
+				<div class="col-2">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+							id="btnAddProducts">
+						Añadir productos
+					</button>
+				</div>
+			</div>
+			<hr />
+
+			<div class="container">
+				<div class="row">
+					<table id="tblDetails" class="table col-12">
+						<thead>
+							<tr>
+								<th>Producto</th>
+								<th>Impuesto</th>
+								<th>Valor</th>
+								<th>Cantidad</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="row justify-content-end">
+				<div class="col-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="row">
+								<label class="col-6">Subtotal</label>
+								<label class="col-6 fw-bold" id="lblSubtotal">$ 0</label>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="row">
+								<label class="col-6">ITBIS</label>
+								<label class="col-6 fw-bold" id="lblTaxes">$ 0</label>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="row">
+								<label class="col-6">Total</label>
+								<label class="col-6 fw-bold" id="lblTotal">$ 0</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-3">
+		<div class="row justify-content-end">
+			<div class="col-2">
+				<div class="row justify-content-end">
+					<button type="button" onClick="saveBill()" class="btn btn-success">Guardar factura</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Seleccionar producto</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<table id="tblProductsList">
+				<table id="tblProductsList" class="table">
 					<thead>
 						<tr>
 							<th>Producto</th>
@@ -70,8 +123,8 @@
 				</table>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary">Guardar cambios</button>
 			</div>
 		</div>
 	</div>

@@ -16,5 +16,8 @@ public class Product
 
     [DisplayName("Existencia")]
     public float Stock { get; set; }
+
+    [DisplayName("Porcentaje de impuestos (%)")]
+	[DisplayFormat(DataFormatString = "{0:P}")]
     public float TaxRate { get; set; }
 }

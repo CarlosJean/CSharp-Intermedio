@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<BillingSystem.Core.Entities.BillDetail>
 
 @{
-	ViewData["Title"] = "Details";
+	ViewData["Title"] = "Detalles | Facturas";
 }
 
-<h1>Details</h1>
+<h1>Detalles</h1>
 
-<p>
-	<a asp-action="Create">Create New</a>
-</p>
 <table class="table">
 	<thead>
 		<tr>
@@ -36,12 +33,16 @@
 					@Html.DisplayFor(modelItem => item.ProductDescription)
 				</td>
 				<td>
-					@(item.Taxes* item.Quantity)
+					@((item.Taxes * item.Quantity).ToString("C"))
 				</td>
 				<td>
-					@(item.UnitPrice* item.Quantity)
+					@((item.UnitPrice * item.Quantity).ToString("C"))
 				</td>
 			</tr>
 		}
 	</tbody>
 </table>
+
+<div>
+	<a asp-action="Index">Volver al listado</a>
+</div>
