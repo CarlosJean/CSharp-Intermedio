@@ -1,3 +1,5 @@
 .vs
 [Bb]in/
 [Oo]bj/
+/Semana_5/BillingSystem/billingSystem.Web/appsettings.json
+/Semana_5/BillingSystem/billingSystem.Web/appsettings.Development.json
