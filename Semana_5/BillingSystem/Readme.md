@@ -38,3 +38,8 @@ El proyecto se conforma por cuatro capas:
 ## Diagrama de base de datos
 
 <img width="1001" height="432" alt="DiagramaBaseDatos" src="https://github.com/user-attachments/assets/db79185c-d166-45f1-ac68-82748db99fcb" />
+
+## Diagrama de flujo
+
+<img width="110" height="1031" alt="imagen" src="https://github.com/user-attachments/assets/0a39d8a9-d0ca-4c94-8d30-02cc94b54b7a" />
+
