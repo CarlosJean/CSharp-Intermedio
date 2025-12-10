@@ -22,6 +22,12 @@ El proyecto se conforma por cuatro capas:
 - **Capa de datos:** BillingSystem.DAL
 - **Capa de núcleo:** BillingSystem.Core
 
+### Patrones de diseño utilizados
+
+- MVC.
+- Repository pattern.
+- Unit Of Work Pattern (UoW).
+
 ## Requisitos funcionales
 
 - El Sistema debe permitir registrar clientes.
