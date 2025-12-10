@@ -21,3 +21,20 @@ El proyecto se conforma por cuatro capas:
 - **Capa de dominio:** BillingSystem.Domain
 - **Capa de datos:** BillingSystem.DAL
 - **Capa de núcleo:** BillingSystem.Core
+
+## Requisitos funcionales
+
+- El Sistema debe permitir registrar clientes.
+- El sistema debería permitir modificar los datos del cliente.
+- El sistema debería consultar clientes.
+- El sistema debería permitir registrar productos.
+- El sistema debería permitir modificar productos.
+- El sistema debería permitir consultar productos.
+- El sistema debería permitir generar facturas.
+- El sistema debería permitir generar y presentar los impuestos correspondientes.
+- El sistema debería permitir consultar todas las facturas emitidas.
+- Al momento de generarse una factura, el sistema debería actualizar el stock de los productos vendidos.
+
+## Diagrama de base de datos
+
+<img width="1001" height="432" alt="DiagramaBaseDatos" src="https://github.com/user-attachments/assets/db79185c-d166-45f1-ac68-82748db99fcb" />
